@@ -7,7 +7,7 @@ const meta = {
   title: 'Components/Avatar',
   tags: ['autodocs'],
   render: (args: AvatarProps) =>
-    html`<base-avatar link=${args.link} size=${args.size}></base-avatar>`,
+    html`<dwc-avatar link=${args.link} size=${args.size}></dwc-avatar>`,
   argTypes: {
     size: {
       control: {
@@ -31,10 +31,10 @@ export const Default: Story = {
 export const DefaultImage = {
   render: () => html`
     <div style="display:flex">
-      <base-avatar size="sm" style="margin-right:12px;"></base-avatar>
-      <base-avatar size="md" style="margin-right:12px;"></base-avatar>
-      <base-avatar size="lg" style="margin-right:12px;"></base-avatar>
-      <base-avatar size="xlg" style="margin-right:12px;"></base-avatar>
+      <dwc-avatar size="sm" style="margin-right:12px;"></dwc-avatar>
+      <dwc-avatar size="md" style="margin-right:12px;"></dwc-avatar>
+      <dwc-avatar size="lg" style="margin-right:12px;"></dwc-avatar>
+      <dwc-avatar size="xlg" style="margin-right:12px;"></dwc-avatar>
     </div>
   `,
 };
@@ -42,26 +42,26 @@ export const DefaultImage = {
 export const HasImage = {
   render: () => html`
     <div style="display:flex">
-      <base-avatar
+      <dwc-avatar
         link="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHGbemCSY3JhKeqkaa8T04WaI8QFpSII7KAw&usqp=CAU"
         size="sm"
         style="margin-right:12px;"
-      ></base-avatar>
-      <base-avatar
+      ></dwc-avatar>
+      <dwc-avatar
         link="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHGbemCSY3JhKeqkaa8T04WaI8QFpSII7KAw&usqp=CAU"
         size="md"
         style="margin-right:12px;"
-      ></base-avatar>
-      <base-avatar
+      ></dwc-avatar>
+      <dwc-avatar
         link="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHGbemCSY3JhKeqkaa8T04WaI8QFpSII7KAw&usqp=CAU"
         size="lg"
         style="margin-right:12px;"
-      ></base-avatar>
-      <base-avatar
+      ></dwc-avatar>
+      <dwc-avatar
         link="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHGbemCSY3JhKeqkaa8T04WaI8QFpSII7KAw&usqp=CAU"
         size="xlg"
         style="margin-right:12px;"
-      ></base-avatar>
+      ></dwc-avatar>
     </div>
   `,
 };

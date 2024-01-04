@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import type { ButtonProps } from '../Button/Button';
-import './TextButton';
+import type { Button } from './Button';
+import './OutlineButton';
 import { html } from 'lit';
 
-const Template = (args: ButtonProps) => html`
-  <text-button
+const Template = (args: Button) => html`
+  <dwc-outline-button
     style="margin: 0 0.5rem"
     color=${args.color || 'primary'}
     backgroundColor=${args.backgroundColor || ''}
@@ -13,11 +13,11 @@ const Template = (args: ButtonProps) => html`
     type=${args.type || 'basic'}
     ?disabled=${args.disabled}
     @click=${args.onClick}
-  ></text-button>
+  ></dwc-outline-button>
 `;
 
 const meta = {
-  title: 'Components/TextButton',
+  title: 'Components/Buttons/OutlineButton',
   tags: ['autodocs'],
   render: Template,
   argTypes: {
@@ -37,11 +37,11 @@ const meta = {
       options: ['primary', 'secondary'],
     },
   },
-  component: 'text-button',
-} satisfies Meta<ButtonProps>;
+  component: 'dwc-outline-button',
+} satisfies Meta<Button>;
 
 export default meta;
-type Story = StoryObj<ButtonProps>;
+type Story = StoryObj<Button>;
 
 export const Default: Story = {
   args: {
@@ -51,82 +51,61 @@ export const Default: Story = {
   },
 };
 
-export const Primary = {
+export const OutlineButtonPrimary = {
   render: () => html`
     <div style="display:flex">
-      <text-button style="margin-right:6px" label="click me!"></text-button>
-      <text-button
+      <dwc-outline-button
+        style="margin-right:6px"
+        label="click me!"
+      ></dwc-outline-button>
+      <dwc-outline-button
         style="margin-right:6px"
         label="click me!"
         type="solid"
-      ></text-button>
-      <text-button
+      ></dwc-outline-button>
+      <dwc-outline-button
         style="margin-right:6px"
         label="click me!"
         type="round"
-      ></text-button>
+      ></dwc-outline-button>
     </div>
   `,
 };
 
-export const Secondary = {
+export const OutlineButtonSecondary = {
   render: () => html`
     <div style="display:flex">
-      <text-button
+      <dwc-outline-button
         style="margin-right:6px"
         label="click me!"
         color="secondary"
-      ></text-button>
-      <text-button
+      ></dwc-outline-button>
+      <dwc-outline-button
         style="margin-right:6px"
         label="click me!"
         color="secondary"
         type="solid"
-      ></text-button>
-      <text-button
+      ></dwc-outline-button>
+      <dwc-outline-button
         style="margin-right:6px"
         label="click me!"
         color="secondary"
         type="round"
-      ></text-button>
-    </div>
-  `,
-};
-
-export const Gray = {
-  render: () => html`
-    <div style="display:flex">
-      <text-button
-        style="margin-right:6px"
-        label="click me!"
-        color="gray"
-      ></text-button>
-      <text-button
-        style="margin-right:6px"
-        label="click me!"
-        color="gray"
-        type="solid"
-      ></text-button>
-      <text-button
-        style="margin-right:6px"
-        label="click me!"
-        color="gray"
-        type="round"
-      ></text-button>
+      ></dwc-outline-button>
     </div>
   `,
 };
 
 export const IconButton = {
   render: () => html` <div style="display:flex">
-    <text-button style="margin-right:6px" size="md">
+    <dwc-outline-button style="margin-right:6px" size="md">
       <plus-icon slot="leftIcon" color="#1DB177"></plus-icon>
-    </text-button>
-    <text-button style="margin-right:6px" size="md" label="Click Me!">
+    </dwc-outline-button>
+    <dwc-outline-button style="margin-right:6px" size="md" label="Click Me!">
       <plus-icon slot="leftIcon" color="#1DB177"></plus-icon>
-    </text-button>
-    <text-button style="margin-right:6px" size="md" label="Click Me!">
+    </dwc-outline-button>
+    <dwc-outline-button style="margin-right:6px" size="md" label="Click Me!">
       <plus-icon slot="rightIcon" color="#1DB177"></plus-icon>
-    </text-button>
+    </dwc-outline-button>
   </div>`,
 };
