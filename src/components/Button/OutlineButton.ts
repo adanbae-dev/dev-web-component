@@ -1,14 +1,14 @@
 import { customElement } from 'lit/decorators.js';
 import { html, unsafeCSS } from 'lit';
-import { Button } from '../button/button';
-import style from './textButton.css?inline';
+import { Button } from './Button';
+import style from './OutlineButton.scss?inline';
 
-@customElement('text-button')
-export class TextButton extends Button {
+@customElement('dwc-outline-button')
+export class OutlineButton extends Button {
   render() {
     return html`<button
       type="button"
-      class=${`button--text ${this.size} ${this.type} ${this.color} `}
+      class=${`button--outline ${this.size} ${this.type} ${this.color} `}
       ?disabled=${this.disabled}
       @click=${this.onClick}
     >

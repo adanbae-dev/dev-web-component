@@ -1,14 +1,15 @@
-import { LitElement, html, unsafeCSS } from 'lit';
+import { html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import styles from './avatar.css?inline';
+import styles from './Avatar.scss?inline';
+import TailwindElement from '@/shared/tailwind.element';
 
 export interface AvatarProps {
   link: string;
   size: 'sm' | 'md' | 'lg' | 'xlg';
 }
 
-@customElement('base-avatar')
-export class Avatar extends LitElement {
+@customElement('dwc-avatar')
+export class Avatar extends TailwindElement(styles) {
   @property({ type: String }) link = '';
   @property({ type: String }) size: 'sm' | 'md' | 'lg' | 'xlg' = 'md';
 
@@ -44,6 +45,6 @@ export class Avatar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'base-avatar': Avatar;
+    'dwc-avatar': Avatar;
   }
 }
