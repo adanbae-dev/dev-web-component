@@ -1,13 +1,13 @@
-import { nothing } from "lit";
-import TailwindElement from "@/shared/tailwind.element";
+import { nothing } from 'lit';
+import TailwindElement from '@/shared/tailwind.element';
 
 import style from './icon.scss?inline';
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { until } from 'lit-html/directives/until.js';
 
-import IconPaths from "./IconPaths";
-import IconMap from "./svgs";
+import IconPaths from './IconPaths';
+import IconMap from './svgs';
 
 export const SIZE = {
   XXS: '2xs',
@@ -18,8 +18,7 @@ export const SIZE = {
   XL: 'xl',
   XXL: '2xl',
 } as const;
-export type SIZE = typeof SIZE[keyof typeof SIZE];
-
+export type SIZE = (typeof SIZE)[keyof typeof SIZE];
 
 export interface IconProps {
   numberOfSize?: number;
@@ -29,68 +28,67 @@ export interface IconProps {
 }
 @customElement('dwc-icon')
 export default class Icon extends TailwindElement(style) {
-
-  @property({ 
+  @property({
     type: Number,
-    attribute : 'number-of-size' 
+    attribute: 'number-of-size',
   })
-  numberOfSize?:number;
+  numberOfSize?: number;
 
-  @property({ type: SIZE }) 
-  size:SIZE;
+  @property({ type: SIZE })
+  size: SIZE = SIZE.S;
 
-  @property({ 
+  @property({
     type: String,
-    attribute: 'view-box'
+    attribute: 'view-box',
   })
-  viewBox:string = '0 0 24 24';
+  viewBox: string = '0 0 24 24';
 
-  @property({ type: String }) 
-  name:string = 'ArrowRight'; // keyof typeof IconPaths;
+  @property({ type: String })
+  name: string = 'ArrowRight'; // keyof typeof IconPaths;
 
   protected override render() {
-    console.log("render")
+    console.log('render');
     // if(IconPaths.hasOwnProperty(name)) return nothing;
-    console.log("IconMap", IconMap)
-    console.log("IconMap", this.name)
+    console.log('IconMap', IconMap);
+    console.log('IconMap', this.name);
     // @ts-ignore
     const importedIcon = IconMap[this.name]?.()
       // @ts-ignore
-      .then(iconModule => {
+      .then((iconModule) => {
         let parser = new DOMParser();
-        const doc = parser.parseFromString(iconModule.default, "text/html");
+        const doc = parser.parseFromString(iconModule.default, 'text/html');
         const paragraphs = doc.querySelector('svg');
 
-        if(!paragraphs) return unsafeSVG(doc.body.innerHTML);
+        if (!paragraphs) return unsafeSVG(doc.body.innerHTML);
         let iconSize = 24;
-        console.log("this.size", this.size);
-        console.log("this.size", this.size === SIZE.XS);
-        
-        
-        if(this.size === SIZE.XXS) iconSize = 12;
-        if(this.size === SIZE.XS) iconSize = 16;
-        if(this.size === SIZE.S) iconSize = 20;
-        if(this.size === SIZE.L) iconSize = 28;
-        if(this.size === SIZE.XL) iconSize = 32;
-        if(this.size === SIZE.XXL) iconSize = 36;
-        if(this.numberOfSize && this.numberOfSize > 0) iconSize =  this.numberOfSize;
-        console.log("iconSize", iconSize);
-        console.log("viewBox", this.viewBox);
-        paragraphs.setAttribute("width", iconSize.toString());
-        paragraphs.setAttribute("height", iconSize.toString());
+        console.log('this.size', this.size);
+        console.log('this.size', this.size === SIZE.XS);
 
-        paragraphs.setAttribute("viewBox", this.viewBox);
-        
+        if (this.size === SIZE.XXS) iconSize = 12;
+        if (this.size === SIZE.XS) iconSize = 16;
+        if (this.size === SIZE.S) iconSize = 20;
+        if (this.size === SIZE.L) iconSize = 28;
+        if (this.size === SIZE.XL) iconSize = 32;
+        if (this.size === SIZE.XXL) iconSize = 36;
+        if (this.numberOfSize && this.numberOfSize > 0)
+          iconSize = this.numberOfSize;
+        console.log('iconSize', iconSize);
+        console.log('viewBox', this.viewBox);
+        paragraphs.setAttribute('width', iconSize.toString());
+        paragraphs.setAttribute('height', iconSize.toString());
+
+        paragraphs.setAttribute('viewBox', this.viewBox);
+
         // parser = null;
-        
+
         return unsafeSVG(doc.body.innerHTML);
       });
-      console.log('importedIcon', importedIcon);
+    console.log('importedIcon', importedIcon);
     return until(importedIcon, nothing);
-      // <!-- <svg width="${this.width}" height="${this.height}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        
-      // </svg> -->
-  };  
+    // <!-- <svg width="${this.width}" height="${this.height}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    // </svg> -->
+  }
 
   // updated(changedProperties: Map<string, unknown>) {
   //   console.log("changedProperties", changedProperties)
@@ -115,7 +113,7 @@ export default class Icon extends TailwindElement(style) {
   //   }
   // }
 
- // Private method!!!
+  // Private method!!!
   // Don't use. Don't override.
   // Showing here just for educational purposes only.
   // _enqueueUpdate() {
